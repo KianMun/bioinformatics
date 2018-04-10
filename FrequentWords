@@ -1,0 +1,31 @@
+fhandle = open('dataset_2_10.txt')
+file = fhandle.read()
+
+def PatternCount(text, pattern):
+    count = 0
+    for i in range(len(text)-len(pattern)+1):
+        if text[i:i+len(pattern)] == pattern:
+            count = count + 1
+    return count
+
+
+def FrequentWords(sequence, k):
+    frequentsequence = set()
+    frequentcount = []
+    for i in range(len(sequence)- k ):
+        frequentcount.append(0)
+
+    for i in range(len(sequence) - k):
+        kmer = sequence[i:i+k]
+        frequentcount[i] = PatternCount(sequence, kmer)
+    maxcount = max(frequentcount)
+
+    for i in range(len(sequence) - k):
+        if frequentcount[i] == maxcount:
+            frequentsequence.add(sequence [i:i+k])
+
+    return frequentsequence
+
+frequent_kmer = FrequentWords(file, 11)
+
+print(frequent_kmer)
