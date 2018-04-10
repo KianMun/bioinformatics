@@ -1,0 +1,14 @@
+fhandle = open('PatternCount.txt')
+file = fhandle.read()
+
+def PatternCount(text, pattern):
+    count = 0
+    for i in range(len(text)-len(pattern)+1):
+        if text[i:i+len(pattern)] == pattern:
+            count = count + 1
+    return count
+
+pcount = PatternCount (file, 'TTT')
+
+print ('Text length:', len(file))
+print ('Pattern Count: ',pcount)
