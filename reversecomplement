@@ -1,0 +1,22 @@
+fhandle = open('dataset_3_2.txt')
+file = fhandle.read()
+
+def reverse_complement(input):
+    revcomp = ''
+    for letter in input:
+        letter = letter.upper()
+
+        if letter  == 'A':
+            revcomp += 'T'
+        elif letter == 'T':
+            revcomp += 'A'
+        elif letter == 'G':
+            revcomp += 'C'
+        elif letter == 'C':
+            revcomp += 'G'
+    return (revcomp [::-1])
+#reverse order [::-1]
+
+rcomp = reverse_complement(file)
+
+print (rcomp)
