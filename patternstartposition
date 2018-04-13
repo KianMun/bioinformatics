@@ -1,0 +1,14 @@
+fhandle = open('Vibrio_cholerae.txt')
+file = fhandle.read()
+
+def pstartpos (pattern,genome):
+    position = []
+    for i in range(len(genome) -len(pattern)+1):
+        if genome[i:i+len(pattern)] == pattern:
+            position.append(i)
+
+    return position
+
+strtpos = pstartpos('CTTGATCAT',file)
+
+print(*strtpos)
