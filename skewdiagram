@@ -1,0 +1,17 @@
+def skew(genome):
+    output = [0]
+    for i in genome:
+        if i == 'G':
+            output.append(output[-1]+1)
+        if i == 'C':
+            output.append(output[-1]-1)
+        if i == 'A':
+            output.append(output[-1])
+        if i == 'T':
+            output.append(output[-1])
+
+    return output
+
+skewlst = skew('TAAAGACTGCCGAGAGGCCAACACGAGTGCTAGAACGAGGGGCGTAAACGCGGGTCCGAT.')
+
+print(*skewlst)
