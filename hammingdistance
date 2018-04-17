@@ -1,0 +1,10 @@
+  def hammingdistance (p,q):
+    hdistcount = 0
+    for i in range (len(p)):
+        if p[i] != q[i]:
+            hdistcount +=1
+    return hdistcount
+
+hdist = hammingdistance()
+
+print(hdist)
