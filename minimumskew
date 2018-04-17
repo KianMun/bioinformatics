@@ -1,0 +1,26 @@
+fhandle = open('dataset_7_6.txt')
+file = fhandle.read()
+
+def skew(genome):
+    C=0
+    G=0
+    minskew = 0
+    skewlst = []
+    index = 0
+    for i in genome:
+        index+=1
+        if i == "C":
+            C+=1
+        if i == "G":
+            G+=1
+        skew = G-C
+        if skew < minskew:
+            skewlst = [index]
+            minskew = skew
+        if skew == minskew and index not in skewlst:
+            skewlst.append(index)
+
+    return skewlst
+minskew = skew (file)
+
+print (*minskew)
