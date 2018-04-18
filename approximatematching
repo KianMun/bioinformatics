@@ -1,0 +1,29 @@
+#We say that a k-mer Pattern appears as a substring of Text with at most d mismatches if there is some k-mer substring
+# Pattern' of Text having d or fewer mismatches with Pattern, i.e., HammingDistance(Pattern, Pattern') ≤ d.
+# Our observation that a DnaA box may appear with slight variations leads to the following generalization of
+# the Pattern Matching Problem.
+
+# hammingdistance is counting the number of mismatches
+def hammingdistance (p,q):
+    hdistcount = 0
+    for i in range (len(p)):
+        if p[i] != q[i]:
+            hdistcount +=1
+    return hdistcount
+
+
+def approxmatching(pattern,text,d):
+    #d must be integer
+    matchstart = []
+    #list to store approximate match starting point positions
+    for i in range(len(text)- len(pattern)+1):
+        #iterate through text at length of pattern
+        if hammingdistance(text[i:i+len(pattern)], pattern) <= d:
+            #if mismatch is less than d, append postiion to list
+            matchstart.append(i)
+    return matchstart
+
+mismatch = approxmatching('' ,'', 4 )
+#d must be integer
+
+print(*mismatch)
