@@ -1,0 +1,44 @@
+"""
+frequent_kmer
+=============
+Finding the frequent kmer in a given string. Where kmer is the length of the
+kmer being searched. E.g kmer =3, given string will be search for all possible
+length 3 string over given string. Return all kmers with the highest frequency 
+
+patternCount
+============
+To count the recurring string pattern in a given string
+
+FrequentWords
+=============
+To gather all the kmers where is any given integer and count its frequency
+And to return the kmers with the highest frequency
+"""
+
+def patternCount( text, pattern):
+    count = 0
+    for i in range(len(text)):
+        if text[i:i+ len(pattern)] == pattern:
+            count += 1
+    return count
+
+def frequentWords(text, k):
+    frequentPatterns = []       # list to store ONLY FREQUENT patterns
+    pattern_lst = []            # list to store ALL patterns
+    count = [0]*len(text)       # initialize a list the length of the string for subequent iteration
+    for i in range(len(text)-k+1):
+        pattern = text[i:i+k]
+        count[i] = patternCount(text, pattern)
+        pattern_lst.append(pattern)
+
+    patterncount = dict(zip(pattern_lst, count))            # zip pattern and count into a dict
+    maxCount = max(patterncount.items(), key=lambda x:x[1]) # returns all max values
+
+    for key, value in patterncount.items():
+        if value == maxCount[1]:
+            frequentPatterns.append(key)
+    return frequentPatterns#, patterncount
+
+#Test
+if __name__ == '__main__':
+    print(frequentWords('CCAGCGGGGGTTGATGCTCTGGGGGTCACAAGATTGCATTTTTATGGGGTTGCAAAAATGTTTTTTACGGCAGATTCATTTAAAATGCCCACTGGCTGGAGACATAGCCCGGATGCGCGTCTTTTACAACGTATTGCGGGGTAAAATCGTAGATGTTTTAAAATAGGCGTAAC', 5))
