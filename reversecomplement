@@ -1,22 +1,16 @@
-fhandle = open('dataset_3_2.txt')
-file = fhandle.read()
-
-def reverse_complement(input):
+def rev_comp(seq):
     revcomp = ''
-    for letter in input:
-        letter = letter.upper()
+    for i in seq:
+        i = i.upper()
+        if i == 'A':
+            revcomp +=('T')
+        elif i == 'T':
+            revcomp +=('A')
+        elif i == 'G':
+            revcomp +=('C')
+        elif i == 'C':
+            revcomp +=('G')
+    return revcomp[::-1]
 
-        if letter  == 'A':
-            revcomp += 'T'
-        elif letter == 'T':
-            revcomp += 'A'
-        elif letter == 'G':
-            revcomp += 'C'
-        elif letter == 'C':
-            revcomp += 'G'
-    return (revcomp [::-1])
-#reverse order [::-1]
-
-rcomp = reverse_complement(file)
-
-print (rcomp)
+if __name__ == '__main__':
+    print(rev_comp('atgcctga'))
