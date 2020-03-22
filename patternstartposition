@@ -1,14 +1,13 @@
-fhandle = open('Vibrio_cholerae.txt')
-file = fhandle.read()
+"""
+Return start position(0 indexing) of string pattern from a string sequence(e.g. genome seq)
+"""
 
-def pstartpos (pattern,genome):
+def startpos_pattern(pattern, seq):
     position = []
-    for i in range(len(genome) -len(pattern)+1):
-        if genome[i:i+len(pattern)] == pattern:
+    for i in range(len(seq) - len(pattern)+1):
+        if seq[i:i+len(pattern)] == pattern:
             position.append(i)
-
     return position
 
-strtpos = pstartpos('CTTGATCAT',file)
-
-print(*strtpos)
+if __name__ == '__main__':
+    print(startpos_pattern('ATA', 'ATATATA'))
